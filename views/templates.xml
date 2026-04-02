@@ -1,0 +1,31 @@
+<odoo>
+    <template id="special_deals_page" name="Special Deals">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_title pt32 pb32" style="background-color: #f1f1f1;">
+                    <div class="container text-center">
+                        <h1>Unique Distribution Deals</h1>
+                    </div>
+                </section>
+                <div class="container mt32">
+                    <div class="row">
+                        <t t-foreach="products" t-as="product">
+                            <div class="col-md-3 mb-4">
+                                <div class="card shadow-sm border-0">
+                                    <span t-field="product.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024'}" class="card-img-top"/>
+                                    <div class="card-body">
+                                        <h6 class="card-title"><t t-esc="product.name"/></h6>
+                                        <p class="text-primary font-weight-bold">
+                                            <t t-esc="product.list_price" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </p>
+                                        <a t-attf-href="/shop/product/#{slug(product)}" class="btn btn-sm btn-outline-danger btn-block">View Item</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
